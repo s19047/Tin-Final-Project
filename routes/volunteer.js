@@ -36,10 +36,10 @@ router.post("/", async (req, res) => {
     const newVolunteer = await volunteer.save();
     //res.redirect(`volunteer/${newVolunteer.id}`)
     res.redirect("volunteer");
-  } catch {
+  } catch (err) {
     res.render("volunteers/new", {
       volunteer: volunteer,
-      errorMsg: "Error in Creating Volunteer",
+      errorMsg: err,
     });
   }
   //console.log(req.body);
