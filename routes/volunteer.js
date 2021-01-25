@@ -42,6 +42,7 @@ router.post("/", async (req, res) => {
       errorMsg: "Error in Creating Volunteer",
     });
   }
+  //console.log(req.body);
 });
 
 module.exports = router;
