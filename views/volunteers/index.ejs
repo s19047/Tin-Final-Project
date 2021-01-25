@@ -1,0 +1,32 @@
+<h2 class="page-header">Search Volunteers</h2>
+<form action="/volunteer" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        value="<%= searchOptions.lastName %>"
+      />
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br />
+<% volunteers.forEach(volunteer => { %>
+<div class="volunteer-row">
+  <div class="volunteer-name">
+    <%= volunteer.firstName + " " + volunteer.lastName %>
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="/volunteer/<%= volunteer.id %>">View</a>
+    <a class="btn btn-primary" href="/volunteer/<%= volunteer.id %>/edit"
+      >Edit</a
+    >
+    <!-- prettier-ignore -->
+    <%- //include('../partials/deleteForm', { url: `/volunteer/${volunteer.id}` })%>
+  </div>
+</div>
+<% }) %>
