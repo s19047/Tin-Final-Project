@@ -4,12 +4,15 @@ const Volunteer = require("../models/volunteer");
 
 // Get All Volunteers Route
 router.get("/", async (req, res) => {
-  let searchOptions = {};
+  let query = Volunteer.find();
+  if (req.query.firstName != null && req.query.firstName !== "") {
+    query = query.regex("firstName", new RegExp(req.query.firstName, "i"));
+  }
   if (req.query.lastName != null && req.query.lastName !== "") {
-    searchOptions.lastName = new RegExp(req.query.lastName, "i");
+    query = query.regex("lastName", new RegExp(req.query.lastName, "i"));
   }
   try {
-    const volunteers = await Volunteer.find(searchOptions);
+    const volunteers = await query.exec();
     res.render("volunteers/index", {
       volunteers: volunteers,
       searchOptions: req.query,

@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 
 const indexRouter = require("./routes/index");
 const volunteerRouter = require("./routes/volunteer");
+const helpSeekerRouter = require("./routes/helpSeeker");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -29,5 +30,6 @@ db.once("open", () => console.log("Connected to database successfuly."));
 
 app.use("/", indexRouter);
 app.use("/volunteer", volunteerRouter);
+app.use("/helpSeeker", helpSeekerRouter);
 
 app.listen(PORT);
