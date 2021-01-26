@@ -1,0 +1,12 @@
+<% profilePicClass = locals.large ? 'profile-pic-large' : '' %> <% picGridClass
+= locals.large ? 'pic-grid-large' : '' %>
+<div class="pic-grid <%= picGridClass %>">
+  <% helpSeekers.forEach(helpSeeker => { %>
+  <a href="/helpSeeker/<%= helpSeeker.id %>">
+    <img
+      class="profile-pic <%= profilePicClass %>"
+      src="<%= helpSeeker.profilePicPath %>"
+    />
+  </a>
+  <% }) %>
+</div>

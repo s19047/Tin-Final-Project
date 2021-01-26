@@ -1,9 +1,17 @@
-<label>First Name</label>
-<input type="text" name="firstName" value="<%=volunteer.firstName %>" />
 
+<div class="form-row">
+  <div class="form-item">
+    <label>First Name</label>
+    <input type="text" name="firstName" value="<%=volunteer.firstName %>" />
+</div>
+<div class="form-item">
 <label>Last Name</label>
 <input type="text" name="lastName" value="<%=volunteer.lastName %>" />
+</div></div>
 
+
+<div class="form-row">
+  <div class="form-item">
 <label>Nationality</label>
 <select id="nationality" name="nationality">
   <!-- prettier-ignore -->
@@ -18,7 +26,9 @@
     ><%=country_list[i]%>
   </option>
   <% } %>
-</select>
+</select> </div>
 
+<div class="form-item">
 <label>Phone Number</label>
 <input type="tel" name="phone" value="<%=volunteer.phone %>" />
+</div></div>

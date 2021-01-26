@@ -1,5 +1,5 @@
-<h2 class="page-header">Search Volunteers</h2>
-<form action="/volunteer" method="GET">
+<h2 class="page-header">Search HelpSeekers</h2>
+<form action="/helpSeeker" method="GET">
   <div class="form-row">
     <div class="form-item">
       <label>First Name</label>
@@ -23,18 +23,6 @@
   </div>
 </form>
 <br />
-<% volunteers.forEach(volunteer => { %>
-<div class="volunteer-row">
-  <div class="volunteer-name">
-    <%= volunteer.firstName + " " + volunteer.lastName %>
-  </div>
-  <div class="btn-row">
-    <a class="btn btn-primary" href="/volunteer/<%= volunteer.id %>">View</a>
-    <a class="btn btn-primary" href="/volunteer/<%= volunteer.id %>/edit"
-      >Edit</a
-    >
-    <!-- prettier-ignore -->
-    <%- //include('../partials/deleteForm', { url: `/volunteer/${volunteer.id}` })%>
-  </div>
-</div>
-<% }) %>
+
+<%- include('../partials/picGridHelpSeeker', { helpSeekers: helpSeekers, large:
+true }) %>

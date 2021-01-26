@@ -18,11 +18,10 @@ const helpSeekerSchema = mongoose.Schema({
   preferredDate: { type: Date, required: true, default: Date.now },
 });
 
+// prettier-ignore
 helpSeekerSchema.virtual("profilePicPath").get(function () {
   if (this.profilePic != null && this.profilePicType != null) {
-    return `data:${
-      this.profilePicType
-    };charset=utf-8;base64,${this.profilePicType.toString("base64")}`;
+    return `data:${this.profilePicType};charset=utf-8;base64,${this.profilePic.toString("base64")}`;
   }
 });
 

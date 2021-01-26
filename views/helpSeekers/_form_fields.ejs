@@ -1,24 +1,38 @@
-<label>First Name</label>
-<input type="text" name="firstName" value="<%=helpSeeker.firstName %>" />
+<div class="form-row">
+  <div class="form-item">
+    <label>First Name</label>
+    <input type="text" name="firstName" value="<%=helpSeeker.firstName %>" />
+  </div>
+  <div class="form-item">
+    <label>Last Name</label>
+    <input type="text" name="lastName" value="<%=helpSeeker.lastName %>" />
+  </div>
+</div>
 
-<label>Last Name</label>
-<input type="text" name="lastName" value="<%=helpSeeker.lastName %>" />
+<div class="form-row">
+  <div class="form-item">
+    <label>Address</label>
+    <input type="text" name="address" value="<%=helpSeeker.address %>" />
+  </div>
+  <div class="form-item">
+    <label>Phone Number</label>
+    <input type="tel" name="phone" value="<%=helpSeeker.phone %>" />
+  </div>
+</div>
 
-<label>Address</label>
-<input type="text" name="address" value="<%=helpSeeker.address %>" />
-
-<label>Phone Number</label>
-<input type="tel" name="phone" value="<%=helpSeeker.phone %>" />
-
-<label>Profile Pic</label>
-<input type="file" name="profilePic" />
-
-<label>Desired Help</label>
-<textarea name="helpDesired"><%= helpSeeker.helpDesired %></textarea>
-
-<label>Preferred Date</label>
-<input
-  type="date"
-  name="preferredDate"
-  value="<%= helpSeeker.preferredDate == null ? '' : helpSeeker.preferredDate.toISOString().split('T')[0] %>"
-/>
+<div class="form-row">
+  <div class="form-item">
+    <label>Profile Pic</label>
+    <input type="file" name="profilePic" class="profile-pic-holder filepond" />
+  </div>
+  <div class="form-item">
+    <label>Desired Help Date</label>
+    <input
+      type="date"
+      name="preferredDate"
+      value="<%= helpSeeker.preferredDate == null ? '' : helpSeeker.preferredDate.toISOString().split('T')[0] %>"
+    />
+    <label>Desired Help Description</label>
+    <textarea name="helpDesired"><%= helpSeeker.helpDesired %></textarea>
+  </div>
+</div>

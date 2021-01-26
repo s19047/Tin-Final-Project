@@ -39,8 +39,9 @@ router.post("/", async (req, res) => {
     preferredDate: new Date(req.body.preferredDate),
   });
 
+  savePicture(helpSeeker, req.body.profilePic);
+
   try {
-    savePicture(helpSeeker, req.body.profilePic);
     const newHelpSeeker = await helpSeeker.save();
     //res.redirect(`helpSeeker/${newHelpSeeker.id}`)
     res.redirect("helpSeeker");
@@ -72,7 +73,7 @@ async function renderFormPage(res, helpSeeker, form, hasError = false) {
     }
     res.render(`helpSeekers/${form}`, params);
   } catch {
-    res.redirect("/helpSeeker");
+    res.redirect("/helpSeeker/new");
   }
 }
 
