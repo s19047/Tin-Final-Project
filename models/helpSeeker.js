@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
-var mongooseTypePhone = require("mongoose-type-phone");
 
 const helpSeekerSchema = mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { first: String, last: { type: String, trim: true } },
   address: { type: String, required: true },
-  phone: { type: mongoose.SchemaTypes.Phone, required: true },
   profilePic: {
     type: Buffer,
     required: true,
@@ -16,6 +13,11 @@ const helpSeekerSchema = mongoose.Schema({
   },
   helpDesired: { type: String, required: true },
   preferredDate: { type: Date, required: true, default: Date.now },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
 });
 
 // prettier-ignore

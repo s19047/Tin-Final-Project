@@ -6,10 +6,10 @@ const Volunteer = require("../models/volunteer");
 router.get("/", async (req, res) => {
   let query = Volunteer.find();
   if (req.query.firstName != null && req.query.firstName !== "") {
-    query = query.regex("firstName", new RegExp(req.query.firstName, "i"));
+    query = query.regex("name.first", new RegExp(req.query.firstName, "i"));
   }
   if (req.query.lastName != null && req.query.lastName !== "") {
-    query = query.regex("lastName", new RegExp(req.query.lastName, "i"));
+    query = query.regex("name.last", new RegExp(req.query.lastName, "i"));
   }
   try {
     const volunteers = await query.exec();

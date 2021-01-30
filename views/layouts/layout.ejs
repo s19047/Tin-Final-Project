@@ -27,10 +27,16 @@
     ></script>
     <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script defer src="/javascripts/fileUpload.js"></script>
-    <link id="main-css" rel="stylesheet" href="/stylesheets/main.css" />
+    <!-- <link id="main-css" rel="stylesheet" href="/stylesheets/main.css" /> -->
+    <link rel="stylesheet" href="/stylesheets/register.css" />
+    <link
+      rel="stylesheet prefetch"
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+    />
   </head>
   <body>
-    <%- include("../partials/header.ejs") %> <%- body %> <%-
-    include("../partials/errorMsg.ejs") %>
+    <%- body %> <%- include("../partials/errorMsg.ejs") %>
   </body>
 </html>
+<!-- 
+    <%- include("../partials/header.ejs") %> -->
