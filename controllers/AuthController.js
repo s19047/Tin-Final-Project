@@ -2,6 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const PictureUploadController = require("../controllers/PictureUploadController");
+require("express-validator/check");
 
 const register = async (req, res, next) => {
   bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
@@ -15,6 +16,7 @@ const register = async (req, res, next) => {
       phone: req.body.phone,
       password: hashedPass,
       name: { first: req.body.firstName, last: req.body.lastName },
+      address: req.body.address,
       role: req.body.role,
     });
 
@@ -36,11 +38,16 @@ const register = async (req, res, next) => {
   });
 };
 
-const login = (req, res, next) => {
+const login = async (req, res, next) => {
+  //parameters to send
+  const params = {
+    req: req,
+  };
+
   var phone = req.body.phone;
   var password = req.body.password;
 
-  const user = User.findOne({ phone: phone });
+  const user = await User.findOne({ phone: phone });
   if (user) {
     bcrypt.compare(password, user.password, function (err, result) {
       if (err) {
@@ -49,13 +56,18 @@ const login = (req, res, next) => {
         let token = jwt.sign({ phone: user.phone }, process.env.TOKEN_KEY, {
           expiresIn: "1h",
         });
+
+        console.log(token);
         // send token
+        res.json(token);
       } else {
-        console.log("password doesn't match");
+        params.errorMsg = "password does not match";
+        res.render("index", params);
       }
     });
   } else {
-    console.log("no user found");
+    params.errorMsg = "no user with the that number was found";
+    res.render("index", params);
   }
 };
 module.exports = {

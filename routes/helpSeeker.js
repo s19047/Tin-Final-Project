@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const HelpSeeker = require("../models/helpSeeker");
+const authMiddleWare = require("../middlewares/authenticationMiddleWare");
 const User = require("../models/User");
 
 const AuthController = require("../controllers/AuthController");
@@ -8,7 +9,7 @@ const AuthController = require("../controllers/AuthController");
 const { check, validationResult } = require("express-validator/check");
 
 // Get All HelpSeekers Route
-router.get("/", async (req, res) => {
+router.get("/", authMiddleWare, async (req, res) => {
   let userQuery = User.find();
 
   if (req.query.firstName != null && req.query.firstName !== "") {
@@ -22,6 +23,10 @@ router.get("/", async (req, res) => {
       "name.last",
       new RegExp(req.query.lastName, "i")
     );
+  }
+
+  if (req.query.address != null && req.query.address !== "") {
+    userQuery = userQuery.regex("address", new RegExp(req.query.address, "i"));
   }
   try {
     const users = await userQuery.exec();
@@ -42,7 +47,8 @@ router.get("/new", (req, res) => {
 
 // Create New HelpSeeker Route
 router.post(
-  "/",
+  "/new",
+  authMiddleWare,
   [
     check("firstName").not().isEmpty().withMessage("First Name is required"),
     check("lastName").not().isEmpty().withMessage("Last Name is required"),
@@ -90,7 +96,6 @@ router.post(
       renderNewPage(req, res, errors[0]);
     } else {
       const helpSeeker = new HelpSeeker({
-        address: req.body.address,
         helpDesired: req.body.helpDesired,
         user: req.body.phone,
         preferredDate: new Date(req.body.preferredDate),
@@ -101,13 +106,23 @@ router.post(
       try {
         const newHelpSeeker = await helpSeeker.save();
         //res.redirect(`helpSeeker/${newHelpSeeker.id}`)
-        res.redirect("helpSeeker");
+        res.redirect("/helpSeeker");
       } catch (err) {
         renderNewPage(req, res, err);
       }
     }
   }
 );
+
+// book help
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.render("help/book", { user: user, req: req });
+  } catch {
+    res.redirect("/");
+  }
+});
 
 async function renderNewPage(req, res, err) {
   renderFormPage(req, res, "new", err);
@@ -138,4 +153,3 @@ async function renderFormPage(req, res, form, err) {
 }
 
 module.exports = router;
-//value="<%= req.body.preferredDate == null ? '' : req.body.preferredDate.toISOString().split('T')[0] %>"

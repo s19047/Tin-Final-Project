@@ -1,0 +1,44 @@
+<div class="register__row3">
+  <label id="helpLbl">Volunteer Name:</label>
+  <input
+    type="text"
+    class="register__input"
+    name="volunteerName"
+    placeholder="test"
+    value=""
+    disabled
+  />
+
+  <input type="hidden" name="volunteer" value="volunteer.id" disabled />
+</div>
+
+<div class="register__row3">
+  <label id="helpLbl">HelpSeeker Name:</label>
+  <input
+    type="text"
+    class="register__input"
+    name="helpSeekerName"
+    placeholder="<%=user.name.first%> <%= user.name.last %>"
+    disabled
+  />
+  <input type="hidden" name="helpSeeker" value="<%=user.id %>" disabled />
+</div>
+
+<div class="register__row3">
+  <label id="helpLbl"
+    >When would you like to help <%= user.name.first %> ?</label
+  >
+  <input
+    type="date"
+    class="register__input"
+    name="date"
+    value="<%= req.body.date %>"
+  />
+</div>
+
+<div class="register__row4">
+  <label id="helpLbl">Help Description</label>
+  <textarea class="register__input" name="description" id="txtArea">
+<%= req.body.description %></textarea
+  >
+</div>

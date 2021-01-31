@@ -19,6 +19,7 @@
     name="password"
     class="register__input pass"
     placeholder="Password"
+    value="<%=req.body.password %>"
   />
 </div>
 
@@ -64,7 +65,7 @@
 
 <div class="register__row4">
   <label id="helpLbl">Desired Help Description</label>
-  <textarea class="register__input" name="helpDesired">
+  <textarea class="register__input" name="helpDesired" id="txtArea">
 <%= req.body.helpDesired %></textarea
   >
   <input type="hidden" id="role" name="role" value="H" />

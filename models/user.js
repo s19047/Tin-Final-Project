@@ -6,10 +6,12 @@ var roles = ["V", "H", process.env.ADMIN_CODE];
 
 const userSchema = mongoose.Schema(
   {
-    phone: { type: mongoose.SchemaTypes.Phone, required: true },
+    phone: { type: String, required: true },
     password: { type: String, required: true },
 
     name: { first: String, last: { type: String, trim: true } },
+
+    address: { type: String, required: true },
     role: { type: String, enum: roles, required: true },
     profilePic: {
       type: Buffer,

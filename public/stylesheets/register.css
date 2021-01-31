@@ -37,14 +37,37 @@ body {
 }
 
 .pic-grid {
-  display: grid;
-  justify-content: center;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fill, var(--profile-pic-width));
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 4.5rem 1rem 4.5rem;
+  flex-wrap: wrap;
+}
+#lineBreak {
+  margin: auto;
+  margin-top: 70%;
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+  width: 95%;
+}
+.picture_display {
+  width: 8rem;
+  height: 100%;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+.picture_box {
+  position: relative;
+  margin-top: 3.5rem;
 }
 
 .pic-grid-large {
   grid-template-columns: repeat(auto-fill, var(--profile-pic-width-large));
+}
+.picLbl {
+  position: absolute;
+  color: white;
+  bottom: -1.6rem;
+  font-size: 0.8rem;
 }
 
 .filepond--root {
@@ -119,6 +142,7 @@ button {
   width: 30rem;
   height: 60rem;
   overflow: hidden;
+  box-shadow: 8px 8px 7px rgba(90, 85, 85, 0.4);
 }
 #error {
   left: 50%;
@@ -382,7 +406,9 @@ label {
   color: #fff;
   cursor: pointer;
 }
-
+#txtArea {
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+}
 .app {
   position: absolute;
   top: 0;

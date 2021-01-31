@@ -19,6 +19,7 @@
     name="password"
     class="register__input pass"
     placeholder="Password"
+    value="<%=req.body.password %>"
   />
 </div>
 
@@ -39,6 +40,16 @@
     name="lastName"
     value="<%=req.body.lastName %>"
     placeholder="Last Name"
+  />
+</div>
+
+<div class="register__row">
+  <input
+    type="text"
+    class="register__input"
+    name="address"
+    value="<%=req.body.address %>"
+    placeholder="Address"
   />
 </div>
 
