@@ -1,41 +1,71 @@
-<div class="form-row">
-  <div class="form-item">
-    <label>First Name</label>
-    <input type="text" name="firstName" value="<%=req.body.firstName %>" />
-  </div>
-  <div class="form-item">
-    <label>Last Name</label>
-    <input type="text" name="lastName" value="<%=req.body.lastName %>" />
-  </div>
+<div class="register__row2">
+  <label id="labelPic">Upload Picture:</label><br />
+  <input type="file" name="profilePic" class="profile-pic-holder filepond" />
 </div>
 
-<div class="form-row">
-  <div class="form-item">
-    <label>Address</label>
-    <input type="text" name="address" value="<%=req.body.address %>" />
-  </div>
-  <div class="form-item">
-    <label>Phone Number</label>
-    <input type="tel" name="phone" value="<%=req.body.phone %>" />
-  </div>
+<div class="register__row">
+  <input
+    type="text"
+    class="register__input"
+    name="firstName"
+    placeholder="First Name"
+    value="<%=req.body.firstName %>"
+  />
 </div>
 
-<div class="form-row">
-  <div class="form-item">
-    <label>Password</label>
-    <input type="password" name="password" />
-    <label>Profile Pic</label>
-    <input type="file" name="profilePic" class="profile-pic-holder filepond" />
-  </div>
-  <div class="form-item">
-    <label>Desired Help Date</label>
-    <input
-      type="date"
-      name="preferredDate"
-      value="<%= req.body.preferredDate %>"
-    />
-    <label>Desired Help Description</label>
-    <textarea name="helpDesired"><%= req.body.helpDesired %></textarea>
-  </div>
+<div class="register__row">
+  <input
+    type="text"
+    class="register__input"
+    name="lastName"
+    value="<%=req.body.lastName %>"
+    placeholder="Last Name"
+  />
+</div>
+
+<div class="register__row">
+  <input
+    type="text"
+    class="register__input"
+    name="address"
+    value="<%=req.body.address %>"
+    placeholder="Address"
+  />
+</div>
+
+<div class="register__row">
+  <input
+    type="tel"
+    class="register__input"
+    name="phone"
+    value="<%=req.body.phone %>"
+    placeholder="Phone Number"
+  />
+</div>
+
+<div class="register__row">
+  <input
+    type="password"
+    name="password"
+    class="register__input pass"
+    placeholder="Password"
+  />
+</div>
+
+<div class="register__row3">
+  <label id="helpLbl">Desired Help Date</label>
+  <input
+    type="date"
+    class="register__input"
+    name="preferredDate"
+    value="<%= req.body.preferredDate %>"
+  />
+</div>
+
+<div class="register__row4">
+  <label id="helpLbl">Desired Help Description</label>
+  <textarea class="register__input" name="helpDesired">
+<%= req.body.helpDesired %></textarea
+  >
   <input type="hidden" id="role" name="role" value="H" />
 </div>

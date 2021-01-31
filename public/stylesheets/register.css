@@ -18,6 +18,51 @@ body {
     font-size: 40%;
   }
 }
+:root {
+  --form-label-font-size: 1rem;
+  --profile-pic-width: 110px;
+  --profile-pic-width-large: 225px;
+  --profile-pic-aspect-ratio: 1;
+}
+
+.profile-pic {
+  width: var(--profile-pic-width);
+  height: calc(var(--profile-pic-width) / var(--profile-pic-aspect-ratio));
+}
+.profile-pic-holder {
+  margin-left: 10%;
+  width: 9;
+  min-width: 9rem;
+}
+
+.pic-grid {
+  display: grid;
+  justify-content: center;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fill, var(--profile-pic-width));
+}
+
+.pic-grid-large {
+  grid-template-columns: repeat(auto-fill, var(--profile-pic-width-large));
+}
+
+.filepond--root {
+  margin-bottom: 0;
+}
+.filepond--root .filepond--credits {
+  text-decoration: none;
+  font-size: 1px;
+}
+
+.filepond--panel-root {
+  background-color: var(--form-input-background-color);
+  border: 1px solid var(--form-input-border-color);
+}
+
+.filepond--drop-label {
+  color: var(--color-text-light);
+  font-size: inherit;
+}
 
 svg {
   display: inline-block;
@@ -41,11 +86,21 @@ button {
   border: none;
 }
 
+#linkButton {
+  text-decoration: none;
+  color: white;
+  float: center;
+  text-align: center;
+}
+#helpLbl {
+  font-size: 1rem;
+}
+
 .cont {
   position: relative;
   height: 100%;
-  background-image: url("https://i.imgur.com/UP7fWfg.jpg");
-  background-size: cover;
+  background-color: #b8c6db;
+  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
   overflow: auto;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
@@ -55,10 +110,21 @@ button {
   top: 50%;
   left: 50%;
   margin-left: -15rem;
-  margin-top: -26.5rem;
+  margin-top: -30.5rem;
   width: 30rem;
-  height: 53rem;
+  height: 60rem;
   overflow: hidden;
+}
+#error {
+  left: 50%;
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #9f6000;
+  background-color: #feefb3;
+  background-image: url("https://i.imgur.com/Z8q7ww7.png");
 }
 
 .login {
@@ -88,29 +154,17 @@ button {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-.login__check {
+
+.login__header {
   position: absolute;
-  top: 16rem;
-  left: 13.5rem;
-  width: 14rem;
-  height: 2.8rem;
-  background: #fff;
-  -webkit-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-.login__check:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  width: 2.8rem;
-  height: 5.2rem;
-  background: #fff;
-  box-shadow: inset -0.2rem -2rem 2rem rgba(0, 0, 0, 0.2);
+  top: 1rem;
+  left: 1rem;
+  width: 28rem;
+  height: 28rem;
+  background-image: url("../images/1.jpeg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 .login__form {
   position: absolute;
@@ -121,10 +175,38 @@ button {
   padding: 1.5rem 2.5rem;
   text-align: center;
 }
+.register__form {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  padding: 1.5rem 2.5rem;
+}
 .login__row {
   height: 5rem;
   padding-top: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.register__row {
+  height: 3.5rem;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register__row2 {
+  display: flex;
+  height: 10rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.register__row3 {
+  height: 7rem;
+  padding-top: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.register__row4 {
+  height: 8rem;
+  padding-top: 0.2rem;
 }
 .login__icon {
   margin-bottom: -0.4rem;
@@ -142,12 +224,33 @@ button {
   -webkit-animation: animatePath 2s 0.5s forwards;
   animation: animatePath 2s 0.5s forwards;
 }
+label {
+  color: white;
+  opacity: 0.6;
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+#labelPic {
+  margin-top: 12%;
+  margin-left: 10%;
+  font-size: 1.2rem;
+}
 .login__input {
   display: inline-block;
   width: 22rem;
   height: 100%;
   padding-left: 1.5rem;
   font-size: 1.5rem;
+  background: transparent;
+  color: #fdfcfd;
+}
+.register__input {
+  display: inline-block;
+  width: 22rem;
+  height: 100%;
+  padding-left: 1.15rem;
+  font-size: 1.15rem;
   background: transparent;
   color: #fdfcfd;
 }
@@ -164,6 +267,27 @@ button {
   overflow: hidden;
   -webkit-transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+#registerBox {
+  display: flex;
+  justify-content: space-between;
+}
+.register__submit {
+  width: 10rem;
+  height: 3.5rem;
+  margin: 5rem 0 2.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: #ff3366;
+  font-size: 1.25rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+::placeholder {
+  color: white;
+  opacity: 0.6;
 }
 .login__submit:after {
   content: "";
@@ -183,6 +307,7 @@ button {
   -webkit-transition: opacity 0.1s 0.4s;
   transition: opacity 0.1s 0.4s;
   opacity: 0;
+  text-emphasis: none;
 }
 .login__submit.processing {
   width: 4rem;

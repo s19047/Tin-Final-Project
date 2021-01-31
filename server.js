@@ -9,6 +9,7 @@ const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 
 const indexRouter = require("./routes/index");
+const registerRouter = require("./routes/register");
 const volunteerRouter = require("./routes/volunteer");
 const helpSeekerRouter = require("./routes/helpSeeker");
 
@@ -31,5 +32,6 @@ db.once("open", () => console.log("Connected to database successfuly."));
 app.use("/", indexRouter);
 app.use("/volunteer", volunteerRouter);
 app.use("/helpSeeker", helpSeekerRouter);
+app.use("/register", registerRouter);
 
 app.listen(PORT);
