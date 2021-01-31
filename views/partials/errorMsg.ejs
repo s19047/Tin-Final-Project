@@ -1,3 +1,7 @@
-<%if(locals.errorMsg != null) {%>
-<div id="error"><%=errorMsg%></div>
-<%}%>
+<script type="text/javascript">
+  var error = "<%= locals.errorMsg %>";
+
+  if (error != null && error != "") {
+    alert(error);
+  }
+</script>

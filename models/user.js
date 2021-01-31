@@ -8,9 +8,25 @@ const userSchema = mongoose.Schema(
   {
     phone: { type: mongoose.SchemaTypes.Phone, required: true },
     password: { type: String, required: true },
+
+    name: { first: String, last: { type: String, trim: true } },
     role: { type: String, enum: roles, required: true },
+    profilePic: {
+      type: Buffer,
+      required: true,
+    },
+    profilePicType: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
+// prettier-ignore
+userSchema.virtual("profilePicPath").get(function () {
+  if (this.profilePic != null && this.profilePicType != null) {
+    return `data:${this.profilePicType};charset=utf-8;base64,${this.profilePic.toString("base64")}`;
+  }
+});
 module.exports = mongoose.model("User", userSchema);

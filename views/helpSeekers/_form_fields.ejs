@@ -5,6 +5,25 @@
 
 <div class="register__row">
   <input
+    type="tel"
+    class="register__input"
+    name="phone"
+    value="<%=req.body.phone %>"
+    placeholder="Phone Number"
+  />
+</div>
+
+<div class="register__row">
+  <input
+    type="password"
+    name="password"
+    class="register__input pass"
+    placeholder="Password"
+  />
+</div>
+
+<div class="register__row">
+  <input
     type="text"
     class="register__input"
     name="firstName"
@@ -30,25 +49,6 @@
     name="address"
     value="<%=req.body.address %>"
     placeholder="Address"
-  />
-</div>
-
-<div class="register__row">
-  <input
-    type="tel"
-    class="register__input"
-    name="phone"
-    value="<%=req.body.phone %>"
-    placeholder="Phone Number"
-  />
-</div>
-
-<div class="register__row">
-  <input
-    type="password"
-    name="password"
-    class="register__input pass"
-    placeholder="Password"
   />
 </div>
 

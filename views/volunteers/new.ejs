@@ -1,8 +1,18 @@
-<h2>New Volunteer</h2>
-<form action="/volunteer" method="POST">
-  <%- include("_form_fields.ejs") %>
-  <div class="form-row form-row-end btn-row">
-    <a class="btn btn-danger" href="/volunteer">Cancel</a>
-    <button class="btn btn-primary" type="submit">Create</button>
+<div class="cont">
+  <div class="demo">
+    <div class="login">
+      <div id="registerHeader">
+        <h2>Register as a Volunteer</h2>
+      </div>
+      <form class="register__form" action="/volunteer" method="POST">
+        <%- include("_form_fields.ejs") %>
+        <div id="registerBox">
+          <a href="../" id="linkButton">
+            <div class="register__submit">Cancel</div>
+          </a>
+          <button class="register__submit" type="submit">Create</button>
+        </div>
+      </form>
+    </div>
   </div>
-</form>
+</div>

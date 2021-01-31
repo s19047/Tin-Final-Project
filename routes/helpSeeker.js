@@ -1,25 +1,33 @@
 const express = require("express");
 const router = express.Router();
 const HelpSeeker = require("../models/helpSeeker");
-const imageMimeTypes = ["image/jpeg", "image/png", "images/gif"];
-const AuthController = require("../controllers/AuthController");
 const User = require("../models/User");
+
+const AuthController = require("../controllers/AuthController");
 //validation
 const { check, validationResult } = require("express-validator/check");
 
 // Get All HelpSeekers Route
 router.get("/", async (req, res) => {
-  let query = HelpSeeker.find();
+  let userQuery = User.find();
+
   if (req.query.firstName != null && req.query.firstName !== "") {
-    query = query.regex("name.first", new RegExp(req.query.firstName, "i"));
+    userQuery = userQuery.regex(
+      "name.first",
+      new RegExp(req.query.firstName, "i")
+    );
   }
   if (req.query.lastName != null && req.query.lastName !== "") {
-    query = query.regex("name.last", new RegExp(req.query.lastName, "i"));
+    userQuery = userQuery.regex(
+      "name.last",
+      new RegExp(req.query.lastName, "i")
+    );
   }
   try {
-    const helpSeekers = await query.exec();
+    const users = await userQuery.exec();
+
     res.render("helpSeekers/index", {
-      helpSeekers: helpSeekers,
+      users: users,
       searchOptions: req.query,
     });
   } catch {
@@ -82,7 +90,6 @@ router.post(
       renderNewPage(req, res, errors[0]);
     } else {
       const helpSeeker = new HelpSeeker({
-        name: { first: req.body.firstName, last: req.body.lastName },
         address: req.body.address,
         helpDesired: req.body.helpDesired,
         user: req.body.phone,
@@ -90,9 +97,6 @@ router.post(
       });
       //register user
       await AuthController.register(req, res);
-
-      //Save profile picture to database
-      savePicture(helpSeeker, req.body.profilePic);
 
       try {
         const newHelpSeeker = await helpSeeker.save();
@@ -130,15 +134,6 @@ async function renderFormPage(req, res, form, err) {
     res.render(`helpSeekers/${form}`, params);
   } catch {
     res.redirect("/helpSeeker/new");
-  }
-}
-
-function savePicture(helpSeeker, encodedPic) {
-  if (encodedPic == null) return;
-  const pic = JSON.parse(encodedPic);
-  if (pic != null && imageMimeTypes.includes(pic.type)) {
-    helpSeeker.profilePic = new Buffer.from(pic.data, "base64");
-    helpSeeker.profilePicType = pic.type;
   }
 }
 

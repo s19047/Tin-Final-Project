@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const PictureUploadController = require("../controllers/PictureUploadController");
 
 const register = async (req, res, next) => {
   bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
@@ -13,8 +14,12 @@ const register = async (req, res, next) => {
     let user = new User({
       phone: req.body.phone,
       password: hashedPass,
+      name: { first: req.body.firstName, last: req.body.lastName },
       role: req.body.role,
     });
+
+    //Save profile picture to database
+    PictureUploadController.savePicture(user, req.body.profilePic);
 
     user
       .save()

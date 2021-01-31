@@ -33,6 +33,7 @@ body {
   margin-left: 10%;
   width: 9;
   min-width: 9rem;
+  border: white dotted 2px;
 }
 
 .pic-grid {
@@ -94,6 +95,10 @@ button {
 }
 #helpLbl {
   font-size: 1rem;
+}
+#nationalityLbl {
+  font-size: 1.25rem;
+  margin-left: 1.25rem;
 }
 
 .cont {
@@ -188,20 +193,23 @@ button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .register__row {
-  height: 3.5rem;
-  padding-top: 0.5rem;
+  height: 4rem;
+  padding-top: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .register__row2 {
   display: flex;
   height: 10rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.7rem;
 }
 .register__row3 {
   height: 7rem;
   padding-top: 0.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 
 .register__row4 {
@@ -232,8 +240,8 @@ label {
   margin-top: 5px;
 }
 #labelPic {
-  margin-top: 12%;
-  margin-left: 10%;
+  margin-top: 5%;
+  margin-left: 5%;
   font-size: 1.2rem;
 }
 .login__input {
@@ -273,17 +281,52 @@ label {
   justify-content: space-between;
 }
 .register__submit {
-  width: 10rem;
-  height: 3.5rem;
-  margin: 5rem 0 2.2rem;
+  width: 11rem;
+  height: 2.5rem;
+  margin: 3rem 0 2.2rem;
   color: rgba(255, 255, 255, 0.8);
   background: #ff3366;
-  font-size: 1.25rem;
-  border-radius: 3rem;
+  font-size: 1rem;
+  border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
   -webkit-transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+#registerHeader {
+  border: none;
+  padding: 1rem;
+  overflow: hidden;
+  color: white;
+  outline: none;
+  background: -webkit-linear-gradient(
+    top,
+    rgba(146, 135, 187, 0.8) 100%,
+    rgba(0, 0, 0, 0.6) 0%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(146, 135, 187, 0.8) 100%,
+    rgba(0, 0, 0, 0.6) 0%
+  );
+  -webkit-transition: opacity 0.1s,
+    -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+  transition: opacity 0.1s,
+    transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  margin-bottom: 0.7rem;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+#nationality {
+  width: 80%;
+  background: transparent;
+  border: rgba(0, 0, 0, 0.2) solid 2px;
+  margin-top: 7px;
+  margin-left: 1.25rem;
 }
 ::placeholder {
   color: white;
