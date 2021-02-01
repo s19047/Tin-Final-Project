@@ -1,47 +1,40 @@
-<div class="cont">
-  <div class="demo">
-    <div class="login">
-      <div id="registerHeader">
-        <h2>Help someone in need.</h2>
-      </div>
-      <form class="register__form" action="/helpSeeker" method="GET">
-        <div class="register__row">
-          <input
-            type="text"
-            class="register__input"
-            name="firstName"
-            placeholder="First Name"
-            value="<%=searchOptions.firstName %>"
-          />
-        </div>
-
-        <div class="register__row">
-          <input
-            type="text"
-            class="register__input"
-            name="lastName"
-            value="<%=searchOptions.lastName %>"
-            placeholder="Last Name"
-          />
-        </div>
-
-        <div class="register__row">
-          <input
-            type="text"
-            class="register__input"
-            name="address"
-            value="<%=searchOptions.address %>"
-            placeholder="Address"
-          />
-        </div>
-
-        <div id="registerBox">
-          <button class="register__submit" type="submit">Search</button>
-        </div>
-      </form>
-
-      <%- include('../partials/picGridHelpSeeker', { users: users, large: true
-      }) %>
-    </div>
-  </div>
+<div id="registerHeader">
+  <h2>Help someone in need.</h2>
 </div>
+<form class="register__form" action="/helpSeeker" method="GET">
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="firstName"
+      placeholder="First Name"
+      value="<%=searchOptions.firstName %>"
+    />
+  </div>
+
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="lastName"
+      value="<%=searchOptions.lastName %>"
+      placeholder="Last Name"
+    />
+  </div>
+
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="address"
+      value="<%=searchOptions.address %>"
+      placeholder="Address"
+    />
+  </div>
+
+  <div id="registerBox">
+    <button class="register__submit" type="submit">Search</button>
+  </div>
+</form>
+
+<%- include('../partials/picGridHelpSeeker', { users: users, large: true }) %>

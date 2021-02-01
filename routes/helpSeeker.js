@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const HelpSeeker = require("../models/helpSeeker");
-const authMiddleWare = require("../middlewares/authenticationMiddleWare");
 const User = require("../models/User");
-
 const AuthController = require("../controllers/AuthController");
+
+//Access control
+const accessMiddleware = require("../middlewares/accessMiddlewares");
+const authenticate = accessMiddleware.authenticate;
+const authorizeVolunteer = accessMiddleware.authVolunteer;
+
 //validation
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 
 // Get All HelpSeekers Route
-router.get("/", authMiddleWare, async (req, res) => {
-  let userQuery = User.find();
+router.get("/", authenticate, authorizeVolunteer, async (req, res) => {
+  let userQuery = User.find({ role: "H" });
 
   if (req.query.firstName != null && req.query.firstName !== "") {
     userQuery = userQuery.regex(
@@ -48,7 +52,6 @@ router.get("/new", (req, res) => {
 // Create New HelpSeeker Route
 router.post(
   "/new",
-  authMiddleWare,
   [
     check("firstName").not().isEmpty().withMessage("First Name is required"),
     check("lastName").not().isEmpty().withMessage("Last Name is required"),
@@ -115,7 +118,7 @@ router.post(
 );
 
 // book help
-router.get("/:id", async (req, res) => {
+router.get("/:id", authenticate, authorizeVolunteer, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     res.render("help/book", { user: user, req: req });

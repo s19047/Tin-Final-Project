@@ -30,7 +30,7 @@ router.post(
 
     if (errors.length) {
       params = { errorMsg: errors[0] };
-      res.render("index", params);
+      res.redirect("../");
     } else {
       await AuthController.login(req, res);
     }

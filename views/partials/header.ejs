@@ -1,8 +1,22 @@
-<header>
-      <li><a href="/volunteer">volunteers</a></li>
-      <li><a href="/volunteer/new">new volunteer</a></li>
-      <li><a href="/helpSeeker">help-seekers</a></li>
-      <li><a href="/helpSeeker/new">new help-seeker</a></li>
-    </ul>
+<%if (locals.loggedUser) { %>
+<div class="wrap">
+  <nav id="mobile-menu" class="mobile-nav-menu">
+    <div class="menu-menu-1-container">
+      <ul id="primary-menu" class="menu dropdown mobile-nav">
+        <li class="menu-item-custom-custom current-menu-item current_page_item">
+          <a href="/<%=loggedUser.link%>"
+            ><span><i class="home-icon"></i>Home</span></a
+          >
+        </li>
+
+        <li class="menu-item-custom-custom current-menu-item current_page_item">
+          <a href="/logout?_method=DELETE"
+            ><span><i class="home-icon"></i>log out</span></a
+          >
+        </li>
+      </ul>
+    </div>
   </nav>
-</head>
+</div>
+
+; <% } %>

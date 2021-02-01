@@ -1,18 +1,12 @@
-<div class="cont">
-  <div class="demo">
-    <div class="login">
-      <div id="registerHeader">
-        <h2>Register as a Help-Seeker</h2>
-      </div>
-      <form class="register__form" action="/helpSeeker/new" method="POST">
-        <%- include("_form_fields.ejs") %>
-        <div id="registerBox">
-          <a href="../" id="linkButton">
-            <div class="register__submit">Cancel</div>
-          </a>
-          <button class="register__submit" type="submit">Create</button>
-        </div>
-      </form>
-    </div>
-  </div>
+<div id="registerHeader">
+  <h2>Register as a Help-Seeker</h2>
 </div>
+<form class="register__form" action="/helpSeeker/new" method="POST">
+  <%- include("_form_fields.ejs") %>
+  <div id="registerBox">
+    <a href="../" id="linkButton">
+      <div class="register__submit">Cancel</div>
+    </a>
+    <button class="register__submit" type="submit">Create</button>
+  </div>
+</form>

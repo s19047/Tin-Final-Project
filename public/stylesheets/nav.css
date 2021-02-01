@@ -1,0 +1,237 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.wrap {
+  max-width: 85.375rem;
+  margin: 0 auto;
+}
+
+.image-as-background {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.screen-reader-text {
+  height: auto;
+  width: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+}
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  height: auto;
+  width: auto;
+  background-color: #000000;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #ffffff;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  left: 0.3125rem;
+  line-height: normal;
+  padding: 0.9375rem 1.4375rem 0.875rem;
+  text-decoration: none;
+  top: 0.3125rem;
+  z-index: 100000;
+}
+
+/** Core wd_s navigation styles **/
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.menu a {
+  color: #808080;
+}
+.menu a:visited,
+.menu a:focus,
+.menu a:hover {
+  color: #477dca;
+}
+.menu li {
+  margin: 0 0.625rem 0 0;
+}
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu ul::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.menu.menu-horizontal li {
+  display: inline-block;
+}
+.menu.menu-vertical li {
+  margin: 0;
+}
+.menu.menu-vertical a {
+  padding: 0.625rem;
+  border-bottom: 1px solid #cccccc;
+}
+.menu.dropdown ul {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  left: -999em;
+  position: absolute;
+  top: 1.5em;
+  z-index: 99999;
+}
+.menu.dropdown ul ul {
+  left: -999em;
+  top: 0;
+}
+.menu.dropdown ul li:hover > ul,
+.menu.dropdown ul li.focus > ul {
+  left: 100%;
+}
+.menu.dropdown ul a {
+  height: auto;
+  width: 12.5rem;
+}
+.menu.dropdown li:hover > ul,
+.menu.dropdown li.focus > ul {
+  left: auto;
+}
+.menu.dropdown li {
+  float: left;
+  position: relative;
+}
+.menu a {
+  display: block;
+  text-decoration: none;
+}
+.main-navigation {
+  height: auto;
+  width: 100%;
+  clear: both;
+  display: block;
+  float: left;
+}
+.main-navigation ul {
+  display: none;
+}
+@media screen and (min-width: 40rem) {
+  .main-navigation ul {
+    display: block;
+  }
+}
+.main-navigation.toggled ul {
+  display: block;
+}
+
+/** Mobile Navigation **/
+.mobile-menu-more {
+  overflow: hidden;
+}
+
+.mobile-nav-menu {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: all 0.5s ease;
+  width: 0;
+}
+.mobile-nav-menu.more,
+.mobile-nav-menu .sub-menu {
+  transition: all 0.5s ease;
+  width: 100%;
+}
+.mobile-nav-menu.more {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding-top: 1.5625rem;
+}
+.admin-bar .mobile-nav-menu {
+  padding-top: 3.5rem;
+}
+@media screen and (min-width: 48.9375rem) {
+  .admin-bar .mobile-nav-menu {
+    padding-top: 2.5rem;
+  }
+}
+.mobile-nav-menu li {
+  cursor: pointer;
+}
+.mobile-nav-menu > div {
+  bottom: 5.25rem;
+  position: absolute;
+  right: 0;
+  width: 50vw;
+}
+@media screen and (min-width: 48rem) {
+  .mobile-nav-menu > div {
+    bottom: auto;
+    left: 0;
+    right: auto;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.mobile-nav-menu .mobile-nav > li {
+  margin: 0;
+}
+.mobile-nav-menu .mobile-nav > li a {
+  padding: 0 0.625rem;
+}
+
+.mobile-nav-menu .mobile-nav > li:nth-child(-n + 3) {
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  bottom: 0;
+  height: 4rem;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 50%;
+}
+.mobile-nav-menu .mobile-nav > li:nth-child(-n + 3):hover {
+  background-color: #eeeeee;
+  transition: all 0.5s ease;
+}
+.mobile-nav-menu .mobile-nav > li:nth-child(-n + 2) > a {
+  display: block;
+  font-size: 0.75rem;
+  height: 100%;
+  line-height: 1.2;
+}
+.mobile-nav-menu .mobile-nav > li:nth-child(-n + 2) > a span {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  display: block;
+}
+.mobile-nav-menu .mobile-nav > li:nth-child(2) {
+  left: 50%;
+}
+.mobile-nav-menu .mobile-nav > li:nth-child(3) {
+  left: 40%;
+}

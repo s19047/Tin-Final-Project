@@ -1,15 +1,15 @@
+<%if (locals.loggedUser) { %>
 <div class="register__row3">
   <label id="helpLbl">Volunteer Name:</label>
   <input
     type="text"
     class="register__input"
     name="volunteerName"
-    placeholder="test"
-    value=""
+    placeholder="<%=loggedUser.firstName%> <%=loggedUser.lastName%> "
     disabled
   />
 
-  <input type="hidden" name="volunteer" value="volunteer.id" disabled />
+  <input type="hidden" name="volunteer" value="<%=loggedUser.id%>" />
 </div>
 
 <div class="register__row3">
@@ -18,10 +18,15 @@
     type="text"
     class="register__input"
     name="helpSeekerName"
-    placeholder="<%=user.name.first%> <%= user.name.last %>"
+    placeholder="<%=user.name.first%> <%= user.name.last %> "
     disabled
   />
-  <input type="hidden" name="helpSeeker" value="<%=user.id %>" disabled />
+  <input
+    type="hidden"
+    name="helpSeeker"
+    id="helpSeeker"
+    value="<%=user.id %>"
+  />
 </div>
 
 <div class="register__row3">
@@ -42,3 +47,4 @@
 <%= req.body.description %></textarea
   >
 </div>
+<% } %>

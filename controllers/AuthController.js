@@ -2,7 +2,6 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const PictureUploadController = require("../controllers/PictureUploadController");
-require("express-validator/check");
 
 const register = async (req, res, next) => {
   bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
@@ -26,10 +25,6 @@ const register = async (req, res, next) => {
     user
       .save()
       .then((user) => {
-        /*
-        res.json({
-          message: "User Added Successfully",
-        });*/
         console.log("User Added Successfully");
       })
       .catch((error) => {
@@ -53,13 +48,29 @@ const login = async (req, res, next) => {
       if (err) {
         console.log(err);
       } else if (result) {
-        let token = jwt.sign({ phone: user.phone }, process.env.TOKEN_KEY, {
-          expiresIn: "1h",
-        });
-
-        console.log(token);
-        // send token
-        res.json(token);
+        let token = jwt.sign(
+          {
+            id: user.id,
+            phone: user.phone,
+            role: user.role,
+            firstName: user.name.first,
+            lastName: user.name.last,
+            link: user.role == "V" ? "helpSeeker" : "volunteer",
+          },
+          process.env.TOKEN_KEY,
+          {
+            expiresIn: "1h",
+          }
+        );
+        //set token to session then redirect
+        req.session.jwt = token;
+        if (user.role == "H") {
+          res.redirect("/volunteer");
+        } else if (user.role == "V") {
+          res.redirect("/helpSeeker");
+        } else if (user.role == "A") {
+          res.redirect("/admin");
+        }
       } else {
         params.errorMsg = "password does not match";
         res.render("index", params);

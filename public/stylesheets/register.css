@@ -183,7 +183,17 @@ button {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
-
+.login__logo {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  width: 25rem;
+  height: 25rem;
+  background-image: url("../images/logo4.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
 .login__header {
   position: absolute;
   top: 1rem;

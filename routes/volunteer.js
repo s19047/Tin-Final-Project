@@ -4,13 +4,17 @@ const router = express.Router();
 const Volunteer = require("../models/volunteer");
 const User = require("../models/User");
 
+//Access control
 const AuthController = require("../controllers/AuthController");
+const accessMiddleware = require("../middlewares/accessMiddlewares");
+const authenticate = accessMiddleware.authenticate;
+const authorizeHelpSeeker = accessMiddleware.authHelpSeeker;
 
 //validation
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 
 // Get All Volunteers Route
-router.get("/", async (req, res) => {
+router.get("/", authenticate, authorizeHelpSeeker, async (req, res) => {
   let query = Volunteer.find();
   if (req.query.firstName != null && req.query.firstName !== "") {
     query = query.regex("name.first", new RegExp(req.query.firstName, "i"));

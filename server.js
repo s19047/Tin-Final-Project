@@ -8,23 +8,13 @@ const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 const app = express();
 
-//passport stuff
-const passport = require("passport");
-const flash = require("express-flash");
-const session = require("express-session");
-const methodOverride = require("method-override");
-
-const initializePassport = require("./passport-config");
-initializePassport(
-  passport,
-  (phone) => users.find((user) => user.phone === phone),
-  (id) => users.find((user) => user.id === id)
-);
-
 const indexRouter = require("./routes/index");
 const registerRouter = require("./routes/register");
 const volunteerRouter = require("./routes/volunteer");
 const helpSeekerRouter = require("./routes/helpSeeker");
+const helpRouter = require("./routes/help");
+
+const session = require("express-session");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -32,20 +22,19 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ limit: "15mb", extended: false }));
-
-//passport
-app.use(express.urlencoded({ extended: false }));
-app.use(flash());
 app.use(
   session({
+    name: "server-session-cookie-id",
     secret: process.env.TOKEN_KEY,
-    resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+      secure: false,
+      maxAge: 2160000000,
+      httpOnly: false,
+    },
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(methodOverride("_method"));
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, {
@@ -61,5 +50,10 @@ app.use("/", indexRouter);
 app.use("/volunteer", volunteerRouter);
 app.use("/helpSeeker", helpSeekerRouter);
 app.use("/register", registerRouter);
+app.use("/help", helpRouter);
+app.use("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("../");
+});
 
 app.listen(PORT);

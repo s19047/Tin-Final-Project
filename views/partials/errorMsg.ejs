@@ -1,7 +1,12 @@
 <script type="text/javascript">
   var error = "<%= locals.errorMsg %>";
+  var alertMsg = "<%= locals.alertMsg %>";
 
   if (error != null && error != "") {
     alert(error);
+  }
+
+  if (alertMsg != null && alertMsg != "") {
+    alert(alertMsg);
   }
 </script>
