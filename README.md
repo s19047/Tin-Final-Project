@@ -2,12 +2,7 @@
 
 Project has been deployed on heroku : https://wolon.herokuapp.com
 
-Note: incase you want to test this project locally, you need to have a .env file with three values for (DATABASE_URL, TOKEN_KEY, ADMIN_ROLE_CODE)
+#Wolon:
+The app where volunteers and those who need help can meet!
 
-Example:
-
-DATABASE_URL=mongodb://localhost/wolon
-
-TOKEN_KEY=0AcgCqHyefh1234NSmrku6d0AcgC
-
-ADMIN_ROLE_CODE=NXyEtT8au6d0AcgCqHyeo35elYvjnlA+joDOYkkvqh8=
+Notes: .env has been uploaded to make testing easier, in a finished product it obviously shouldn't be there.
