@@ -9,7 +9,7 @@
     disabled
   />
 
-  <input type="hidden" name="volunteer" value="<%=loggedUser.id%>" />
+  <input type="hidden" name="volunteer" value="<%=loggedUser.phone %>" />
 </div>
 
 <div class="register__row3">
@@ -18,7 +18,7 @@
     type="text"
     class="register__input"
     name="helpSeekerName"
-    placeholder="<%=user.name.first%> <%= user.name.last %> "
+    placeholder="<%=user.name.first%> <%= user.phone %> "
     disabled
   />
   <input

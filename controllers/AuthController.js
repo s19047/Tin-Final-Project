@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
     user
       .save()
       .then((user) => {
-        console.log("User Added Successfully");
+        console.log("user added successfully");
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
             role: user.role,
             firstName: user.name.first,
             lastName: user.name.last,
-            link: user.role == "V" ? "helpSeeker" : "volunteer",
+            link: user.role == "V" ? "helpSeeker" : "help",
           },
           process.env.TOKEN_KEY,
           {
@@ -65,7 +65,7 @@ const login = async (req, res, next) => {
         //set token to session then redirect
         req.session.jwt = token;
         if (user.role == "H") {
-          res.redirect("/volunteer");
+          res.redirect("/help");
         } else if (user.role == "V") {
           res.redirect("/helpSeeker");
         } else if (user.role == "A") {

@@ -4,7 +4,7 @@ const helpSeekerSchema = mongoose.Schema({
   helpDesired: { type: String, required: true },
   preferredDate: { type: Date, required: true, default: Date.now },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required: true,
     ref: "User",
   },

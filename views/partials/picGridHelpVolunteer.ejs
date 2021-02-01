@@ -1,0 +1,10 @@
+<hr id="lineBreak" />
+<div class="pic-grid">
+  <% users.forEach(user => { %>
+  <a href="/volunteer/<%= user.id %>" class="picture_box">
+    <img class="picture_display" src="<%= user.profilePicPath %>" />
+
+    <h2 class="picLbl"><%= user.name.first %> <%= user.name.last %></h2>
+  </a>
+  <% }) %>
+</div>

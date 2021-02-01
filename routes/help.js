@@ -1,17 +1,37 @@
 const express = require("express");
 const router = express.Router();
 const Help = require("../models/help");
+const User = require("../models/user");
+const Volunteer = require("../models/volunteer");
 //validation
 const { check, validationResult } = require("express-validator");
 
-router.get("/", async (req, res) => {
-  //toDo: show previous helps
+//Access control
+const accessMiddleware = require("../middlewares/accessMiddlewares");
+const authenticate = accessMiddleware.authenticate;
+const authorizeVolunteer = accessMiddleware.authVolunteer;
+const authorizeHelpSeeker = accessMiddleware.authHelpSeeker;
+
+//show help offers for help seeker
+router.get("/", authenticate, authorizeHelpSeeker, async (req, res) => {
+  //get help offers fo seeker
+  let users = [];
+  Help.find({ helpSeeker: req.loggedUser.id }).then((offers) => {
+    offers.forEach((offer) => {
+      User.findOne({ phone: offer.volunteer }).then((user) => {
+        users.push(user);
+        let searchOptions = {};
+        res.render("help/index", { offers, users, searchOptions });
+      });
+    });
+  });
 });
 
 router.get("/book", async (req, res) => {
   res.render("help/book", { req: req });
 });
 
+//allow volunteer to book help offer
 router.post(
   "/book",
   [
@@ -34,7 +54,6 @@ router.post(
     if (errors.length) {
       renderNewPage(req, res, errors[0]);
     } else {
-      console.log(req.body);
       const help = new Help({
         volunteer: req.body.volunteer,
         helpSeeker: req.body.helpSeeker,
@@ -43,7 +62,7 @@ router.post(
       });
 
       try {
-        const newHelp = await help.save();
+        const newHelp = help.save();
         res.locals.alertMsg = "help was booked successfuly";
         res.redirect("/helpSeeker");
       } catch (err) {

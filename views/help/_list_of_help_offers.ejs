@@ -1,0 +1,41 @@
+<form class="register__form" action="/help" method="GET">
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="firstName"
+      placeholder="First Name - This feature is coming soon :)"
+      value="<%=searchOptions.firstName  %>"
+      disabled
+    />
+  </div>
+
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="lastName"
+      value="<%=searchOptions.lastName %>"
+      placeholder="Last Name- This feature is coming soon :)"
+      disabled
+    />
+  </div>
+
+  <div class="register__row">
+    <input
+      type="text"
+      class="register__input"
+      name="address"
+      value="<%=searchOptions.address %>"
+      placeholder="Address - This feature is coming soon :)"
+      disabled
+    />
+  </div>
+
+  <div id="registerBox">
+    <button class="register__submit">Search</button>
+  </div>
+</form>
+
+<%- include('../partials/picGridHelpVolunteer', { users: users, large: true })
+%>

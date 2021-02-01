@@ -13,9 +13,9 @@ const authenticate = (req, res, next) => {
     res.locals.loggedUser = decode;
     next();
   } catch (error) {
-    console.log(error);
     res.status(400);
     params.errorMsg = "Authentication Failed.";
+    console.log("Authentication Failed.");
     res.redirect("../");
   }
 };

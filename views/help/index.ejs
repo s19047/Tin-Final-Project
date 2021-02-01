@@ -1,0 +1,14 @@
+<div id="registerHeader">
+  <h2>your help offers:</h2>
+</div>
+<!-- if help records were found-->
+<%if (locals.users.length) { %> <%- include('_list_of_help_offers.ejs') %> <%
+}else{%>
+<div id="noRecords">
+  <h2>
+    Unfortunatlly you still don't have any offers from volunteers :(
+    <br />Please be patient
+  </h2>
+</div>
+
+<% } %>

@@ -196,14 +196,24 @@ button {
 }
 .login__header {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 28rem;
-  height: 28rem;
-  background-image: url("../images/1.jpeg");
+  width: 30rem;
+  height: 30rem;
+  background-image: url("../images/2.jpg");
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
+
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+#header2 {
+  background-image: url("../images/1.jpeg");
 }
 .login__form {
   position: absolute;
@@ -419,7 +429,13 @@ label {
 #txtArea {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 }
-
+#noRecords {
+  color: white;
+  padding: 1.5rem;
+  margin-top: 50%;
+  font-size: 1.5rem;
+  text-align: center;
+}
 @-webkit-keyframes rotate {
   to {
     -webkit-transform: rotate(360deg);
