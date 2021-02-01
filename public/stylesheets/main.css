@@ -399,6 +399,7 @@ label {
   border: rgba(0, 0, 0, 0.2) solid 2px;
   margin-top: 7px;
   margin-left: 1.25rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 ::placeholder {
   color: white;
