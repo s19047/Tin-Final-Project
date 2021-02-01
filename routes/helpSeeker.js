@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const HelpSeeker = require("../models/helpSeeker");
-const User = require("../models/User");
+const User = require("../models/user");
 const AuthController = require("../controllers/AuthController");
 
 //Access control
