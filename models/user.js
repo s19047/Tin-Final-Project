@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-var mongooseTypePhone = require("mongoose-type-phone");
 
 // roles: V - volunteer, H - Help Seeker, A - Admin
 var roles = ["V", "H", process.env.ADMIN_CODE];
