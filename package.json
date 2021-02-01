@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "start": "serve -s build",
+    "devStart": "nodemon server.js",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.9.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
