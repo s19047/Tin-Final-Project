@@ -92,7 +92,7 @@ router.post(
       try {
         const newVolunteer = await volunteer.save();
         //res.redirect(`helpSeeker/${newHelpSeeker.id}`)
-        res.redirect("volunteer");
+        res.redirect("help");
       } catch (err) {
         renderNewPage(req, res, err);
       }
