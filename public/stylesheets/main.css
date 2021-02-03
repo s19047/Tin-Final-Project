@@ -28,6 +28,7 @@ body {
 .profile-pic {
   width: var(--profile-pic-width);
   height: calc(var(--profile-pic-width) / var(--profile-pic-aspect-ratio));
+  overflow-y:auto'
 }
 .profile-pic-holder {
   margin-left: 10%;
@@ -37,6 +38,7 @@ body {
 }
 
 .pic-grid {
+  overflow-y:auto;
   display: flex;
   justify-content: space-between;
   padding: 0rem 4.5rem 1rem 4.5rem;
@@ -51,8 +53,10 @@ body {
   width: 95%;
 }
 .picture_display {
+  object-fit: cover;
   width: 8rem;
-  height: 100%;
+  max-height: 8rem;
+  height: auto;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 .picture_box {
