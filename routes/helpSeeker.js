@@ -121,7 +121,8 @@ router.post(
 router.get("/:id", authenticate, authorizeVolunteer, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    res.render("help/book", { user: user, req: req });
+    const seeker = await HelpSeeker.findOne({ user: user.phone });
+    res.render("help/book", { user: user, req: req, seeker: seeker });
   } catch {
     res.redirect("/");
   }
